@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+ _____   _  __    __
+/  ___/ | | \ \  / /
+| |___  | |  \ \/ /
+\___  \ | |   }  {
+ ___| | | |  / /\ \
+/_____/ |_| /_/  \_\  -----Content By six. All Rights Reserved.s
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+  <title>ES6学习笔记（一） | SIX.BLOG</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="SIX.BLOG">
+    <meta name="author" content="six">
+    <meta name="description" content="码农,程序员,前端开发工程师" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="SIX.BLOG" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  <style>
+    #six-password-box{
+      width:  100%;
+      height:  100%;
+      position:  absolute;
+      border:  1px solid #000;
+      background-color:  #000;
+      z-index: 999;
+    }
+
+    #six-password-box .password-form-box{
+      z-index:  999;
+      background-color:  #fff;
+      margin-top: 20%;
+      border-radius: 8px;
+      -webkit-box-shadow: 0 4px 15px rgba(255, 193, 7, 0.51);
+      -moz-box-shadow: 0 4px 15px rgba(255, 193, 7, 0.51);
+      box-shadow: 0 4px 15px rgba(255, 193, 7, 0.51);
+    }
+    @media (max-width:768px) {
+      #six-password-box .password-form-box{
+        margin-top: 30%;
+      }
+    }
+  </style>
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}embed{z-index: -1;position: absolute;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+<!--<div id="six-password-box">-->
+    <!--<div class="password-form-box col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">-->
+            <!--<div class="row">-->
+                <!--<h3 class="col-md-12 text-center">I don`t want anybody to check my blog!</h3>-->
+                <!--<div class="form-group">-->
+                    <!--<div class="col-md-12 col-sm-12 col-xs-12">-->
+                        <!--<input class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1" id="sixPassword" style="padding-top: 0;padding-bottom: 0;border: 1px solid #666;margin-top: 10%" placeholder="Please input password" type="password">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<div class="col-md-4 col-md-offset-4 col-sm-12 col-xs-12" style="padding-top: 0;padding-bottom: 0;text-align: center;">-->
+                        <!--<button class="btn btn-primary" type="button" id="sixSubmitBtn">Submit</button>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close">
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/poem.html" target="_BLANK" class="animsition-link">pretty poem</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/技术/" class="animsition-link">技术<small>(9)</small></a></li>
+				    
+				    <li><a href="/categories/爱好/" class="animsition-link">爱好<small>(3)</small></a></li>
+				    
+				    <li><a href="/categories/生活/" class="animsition-link">生活<small>(12)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://www.cnblogs.com/-sixgod/" class="animsition-link">cnblog</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <!--<EMBED src="http://oyzg3m24h.bkt.clouddn.com/i%20miss%20u.mp3" autostart="true" loop="TRUE" width="0" height="0">-->
+            <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">SIX.BLOG</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/DongbinHu" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/SixHu" title="Twitter" target="_blank"><i class="icon-tuite"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/133230866" title="Sina-Weibo" target="_blank"><i class="icon-zliconweibo01"></i></a></li>
+                            
+                            
+                            <li><a href="http://www.cnblogs.com/-sixgod/" title="cnblogs" target="_blank"><i class="icon-wuxianxinhao"></i></a></li>
+                            
+                            
+                            <li><a href="http://blog.csdn.net/six__god" title="csdn" target="_blank"><i class="icon-c"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+    </div>
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2017-06-17T01:56:44.000Z" itemprop="datePublished">
+          2017-06-17
+      </time>
+    
+</span>
+                <h1>ES6学习笔记（一）</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<p><code>本篇是写我在学习ES6过程中碰到的一些问题，不定时更新</code>  </p>
+<h2 id="注："><a href="#注：" class="headerlink" title="注："></a>注：</h2><p><code>因为考虑到没有目录选项，所以这篇文章不再更新，后期会分模块写到博客中。</code></p>
+<h1 id="1、let"><a href="#1、let" class="headerlink" title="1、let"></a>1、let</h1><p>学习let的时候，在阮一峰老师的《<strong>ECMAScript 6 入门</strong>》中，有这么一段，如下：  </p>
+<blockquote>
+<p>ES6 新增了let命令，用来声明变量。它的用法类似于var，但是所声明的变量，只在let命令所在的代码块内有效。<br>下面的代码如果使用var，最后输出的是9。  </p>
+<pre><code class="javascript"><span class="keyword">var</span> a = [];
+<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) {
+    <span class="keyword">var</span> c = i;
+    a[i] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+    <span class="built_in">console</span>.log(c);
+    };
+}
+a[<span class="number">6</span>](); <span class="comment">// 9</span>
+</code></pre>
+<p>如果使用let，声明的变量仅在块级作用域内有效，最后输出的是6。  </p>
+<pre><code class="javascript"><span class="keyword">var</span> a = [];
+<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) {
+    <span class="keyword">let</span> c = i;
+    a[i] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+    <span class="built_in">console</span>.log(c);
+    };
+}
+a[<span class="number">6</span>](); <span class="comment">// 6</span>
+</code></pre>
+</blockquote>
+<p>我在<a href="https://codepen.io/" target="_blank" rel="noopener">codepen</a>中验证了一下，结果是没错的。但是不明白这和块级作用域有什么关系，大家都知道for循环的闭包问题，用<code>var</code>声明变量，就像上文中第一段代码那样，<code>var c = i;</code>中的<code>c</code>，它保存的就是<code>i</code>的值，它最后一次被赋值的时候<code>i</code>的值为<code>9</code>，所以<code>c</code>最后保存的值是<code>9</code>，而最后的<code>console.log(c)</code>中其实是没有<code>c</code>这个变量的，所以要去父级作用域去找，找到<code>c</code>时，它已经是<code>9</code>了。  </p>
+<p>我理解的for循环是这样，如果循环体中嵌套了函数，就像上文中第一段代码，其实是循环生成了<code>i-1</code>个不同的函数，<code>a[0] = function(){...}</code>、<code>a[1] = function(){...}</code>等，当你每次去调用这些函数中的某一个时，都会先循环生成所有的函数，然后再去执行你调用的那个函数，而这些函数中都没有声明变量<code>c</code>，所以都是找的<code>var c = i;</code>中的<code>c</code>，其实就这么一个变量，它最后值为<code>9</code>,那么所有的函数中的<code>c</code>都是9。  </p>
+<p>对于第一段代码，Bable解析的结果是下面这样：  </p>
+<pre><code class="javascript"><span class="keyword">var</span> a = [];<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) {<span class="keyword">if</span> (<span class="built_in">window</span>.CP.shouldStopExecution(<span class="number">1</span>)){<span class="keyword">break</span>;}
+  <span class="keyword">var</span> c = i;a[i] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+    <span class="built_in">console</span>.log(c);
+  };
+}
+</code></pre>
+<p>第二段代码，Bable解析出来的结果是下面这样：  </p>
+<pre><code class="javascript"><span class="keyword">var</span> a = [];
+<span class="keyword">var</span> _loop = <span class="function"><span class="keyword">function</span> <span class="title">_loop</span>(<span class="params"></span>) </span>{
+  <span class="keyword">var</span> c = i;
+  a[i] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+    <span class="built_in">console</span>.log(c);
+  };
+};
+<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) {<span class="keyword">if</span> (<span class="built_in">window</span>.CP.shouldStopExecution(<span class="number">1</span>)){<span class="keyword">break</span>;}
+  _loop();
+}
+<span class="built_in">window</span>.CP.exitedLoop(<span class="number">1</span>);
+</code></pre>
+<p>for循环肯定是创建了10个函数<code>a[0]</code>,<code>a[1]</code>…<code>a[9]</code>，不同的是，使用var创建变量，只有一个<code>c</code>，每循环一次，<code>c</code>就被覆盖 一次，<code>a[i]</code>函数中的c指向的是只是这一个<code>c</code>，所以输出<code>9</code>，而使用let创建变量，实际上是创建了十个变量，每个<code>a[i]</code>方法都指向不同的<code>c</code>，也就是说，用<code>let</code>声明的变量，只在它被声明的块级作用域有效，当重新用<code>let</code>声明同样名称的变量时，它和之前声明的是不冲突的。如下例：  </p>
+<pre><code class="javascript">{
+    <span class="keyword">let</span> six = <span class="number">6</span>;
+    {
+        <span class="keyword">let</span> six = <span class="number">7</span>; <span class="comment">//这里声明的six变量和它的父级声明的six没有任何关系</span>
+        <span class="comment">//但是如果把let去掉，下面就会输出7了</span>
+    }
+    <span class="built_in">console</span>.log(six);   <span class="comment">//6</span>
+}
+</code></pre>
+<blockquote>
+<p>另外，<code>for</code>循环还有一个特别之处，就是设置循环变量的那部分是一个父作用域，而循环体内部是一个单独的子作用域。</p>
+<pre><code class="javascript"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) {
+  <span class="keyword">let</span> i = <span class="string">'abc'</span>;
+  <span class="built_in">console</span>.log(i);
+}
+</code></pre>
+<p>上面代码正确运行，输出了3次abc。这表明函数内部的变量i与循环变量i不在同一个作用域，有各自单独的作用域。  </p>
+</blockquote>
+<p>我试着将循环体内的<code>let</code>去掉后，只输出1次abc，这是因为循环体内的<code>i</code>的值覆盖了父作用域的<code>i</code>，将代码改成下面这样，同样只输出一次abc  </p>
+<pre><code class="javascript"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) {
+  <span class="keyword">var</span> i = <span class="string">'abc'</span>;
+  <span class="built_in">console</span>.log(i);
+}
+</code></pre>
+<p>道理一样，<code>var</code>声明的变量会覆盖本函数的局部变量，也就是说它们都是同一个变量，只不过在不同的作用域。但是<code>var</code>声明的变量是没有块级作用域一说的。<br>这里还要说的一点是，在<a href="https://codepen.io/" target="_blank" rel="noopener">codepen</a>里输入下面这段代码  </p>
+<pre><code class="javascript"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) {
+  <span class="keyword">let</span> i = <span class="string">'abc'</span>;
+  <span class="built_in">console</span>.log(i);
+}
+</code></pre>
+<p>控制台只会输出一次<code>abc</code>，这是因为Bable会把上面这段代码解析成下面这样  </p>
+<pre><code class="javascript"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) {
+  <span class="keyword">var</span> i = <span class="string">'abc'</span>;
+  <span class="built_in">console</span>.log(i);
+}
+</code></pre>
+<p>这是错的。直接在chrome控制台输入是不会出现这种情况的，chrome支持ES6，所以只能说是Bable解析错了。  </p>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充:"></a><strong>补充</strong>:</h2><blockquote>
+<p>基本类型值与引用类型值<br>JS中的变量可以保存两种不同类型的值：基本类型值和引用类型值。<br>在将一个值赋给变量时，解析器必须确定这个值是基本类型值还是引用类型值。<br>基本数据类型：Number、String、Boolean、Null、Undefiend；这5种基本数据类型是按值访问的，因为可以操作保存在变量中的实际的值。<br>对于基本类型值，在复制变量的时候，会在新的变量上创建一个新值，这个新值是原值的一个副本，它们相互独立。<br>基本类型值之间的比较，只是单纯的值的比较。<br>引用类型值是保存在变量中的对象；引用类型值就是指对象。<br>保存引用类型值的变量，实际上保存的是一个指向该对象的指针。<br>当复制保存着对象的某个变量时，复制的其实是指针；复制操作结束后，两个变量指向同一个对象。<br>对于引用类型值，可以为其添加属性和方法，也可以修改或者删除其属性和方法。<br>在为对象添加属性和方法时，操作的是实际的对象，因此，改变任何一个变量，都会影响另外一个变量。</p>
+<pre><code class="javascript"><span class="keyword">var</span> person1 = {
+    name : <span class="string">"CC"</span>
+};
+<span class="keyword">var</span> person2 = person1;
+<span class="built_in">console</span>.log(person2.name);    <span class="comment">//"CC"</span>
+person2.name = <span class="string">"VV"</span>;
+<span class="built_in">console</span>.log(person1.name);    <span class="comment">//"VV"</span>
+</code></pre>
+<p>引用类型值的比较并非值的比较：即使两个对象包含相同的属性和值，它们也是不相等的；各个索引元素完全相等的两个数组也不相等。<br>引用类型值的比较是引用的比较，当且仅当它们引用同一个对象时，它们才相等。<br>示例1：</p>
+<pre><code class="javascript"><span class="keyword">var</span> person1 = {
+    name : <span class="string">"CC"</span>
+};
+<span class="keyword">var</span> person2 = {
+    name : <span class="string">"CC"</span>
+};
+<span class="built_in">console</span>.log(person1==person2);    <span class="comment">//false</span>
+</code></pre>
+<p>示例2：</p>
+<pre><code class="javascript"><span class="keyword">var</span> person1 = {
+     name : <span class="string">"CC"</span>
+};
+<span class="keyword">var</span> person2 = person1;
+<span class="built_in">console</span>.log(person1 == person2);    <span class="comment">//true</span>
+</code></pre>
+</blockquote>
+<hr>
+<p><em><p style="float:right">2017-07-25</p></em>  </p>
+<h1 id="2、字符串的扩展"><a href="#2、字符串的扩展" class="headerlink" title="2、字符串的扩展"></a>2、字符串的扩展</h1><h2 id="2-1-字符串的遍历器接口"><a href="#2-1-字符串的遍历器接口" class="headerlink" title="2.1 字符串的遍历器接口"></a>2.1 字符串的遍历器接口</h2><blockquote>
+<p>ES6为字符串添加了遍历器接口（详见《Iterator》一章），使得字符串可以被for…of循环遍历。  </p>
+</blockquote>
+<pre><code class="javascript"><span class="keyword">var</span> six = <span class="string">'胡东斌'</span>;
+<span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">of</span> six){
+    <span class="built_in">console</span>.log(i);
+}
+<span class="comment">//胡</span>
+<span class="comment">//东</span>
+<span class="comment">//斌</span>
+</code></pre>
+<h2 id="2-2-includes-startsWith-endsWith"><a href="#2-2-includes-startsWith-endsWith" class="headerlink" title="2.2 includes(), startsWith(), endsWith()"></a>2.2 includes(), startsWith(), endsWith()</h2><blockquote>
+<p>传统上，JavaScript只有indexof方法，可以用来确定一个字符串是否包含在另一个字符串中。ES6又提供了三种新方法。 </p>
+</blockquote>
+<ul>
+<li>includes():返回布尔值，表示是否找到了字符串。</li>
+<li>startsWith():返回布尔值，表示参数字符串是否在源字符串的头部。</li>
+<li>endsWith():返回布尔值，表示参数字符串是否在源字符串的尾部。  </li>
+</ul>
+<pre><code class="javascript"><span class="keyword">var</span> s = <span class="string">'Hello world!'</span>;
+s.includes(<span class="string">'o'</span>);  <span class="comment">//true</span>
+s.startsWith(<span class="string">'Hello'</span>);  <span class="comment">//true</span>
+s.endsWith(<span class="string">'!'</span>);  <span class="comment">//true</span>
+</code></pre>
+<p>这三个方法都支持第二个参数，表示开始搜索的位置  </p>
+<pre><code class="javascript"><span class="keyword">var</span> s = <span class="string">'Hello world'</span>;
+s.includes(<span class="string">'o'</span>,<span class="number">2</span>);   <span class="comment">//true</span>
+s.startsWith(<span class="string">'world'</span>,<span class="number">6</span>);  <span class="comment">//true</span>
+s.endsWith(<span class="string">'Hello'</span>,<span class="number">5</span>)  <span class="comment">//true</span>
+</code></pre>
+<p>上面代码表示，使用第二个参数<code>n</code>时，<code>endsWith</code>的行为与其他两个方法有所不同。它针对前<code>n</code>个字符，而其他两个方法针对从第<code>n</code>个位置开始，直到字符串结束</p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+            <div class="pay-box">
+                <button class="pay-btn">赞赏支持</button>
+            </div>
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/2017/06/17/前端日常杂乱记录/" style="float: left;">
+        ← 前端日常杂乱记录
+    </a>
+    
+    
+    <a class="pull-right" href="/2017/06/14/gulp学习记录/">
+        gulp学习记录 →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+	var disqus_shortname = 'huliuliu';
+	window.addEventListener('load', function(){
+		(function(){
+			var dsq = document.createElement('script');
+			dsq.type = 'text/javascript';
+			dsq.async = true;
+			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		}());
+	});
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<div class="modal fade" id="payModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel" style="text-align: center;">赞赏</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row" style="text-align: center;">
+                    <div class="col-xs-6">
+                        <img class="if-weixin" src="http://汪素云.我爱你/img/weixin-pay.png" alt="微信支付">
+                    </div>
+                    <div class="col-xs-6">
+                        <img class="if-zhifubao" src="http://汪素云.我爱你/img/zhifubao-pay.png" alt="支付宝支付">
+                    </div>
+                    <div class="col-xs-6">
+                        <h3>微信支付</h3>
+                    </div>
+                    <div class="col-xs-6">
+                        <h3>支付宝支付</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy;2017<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By six. All Rights Reserved.s
+                </p>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    <!--<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>-->
+    <div style="display: none;">
+        <script src="https://s5.cnzz.com/z_stat.php?id=1275611334&web_id=1275611334" language="JavaScript"></script>
+    </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<!-- Initiate flexslider plugin -->
+<script type="text/javascript">
+    $(document).ready(function($) {
+      (function(){
+        var getCss = function(path) {
+          var head = document.getElementsByTagName('head')[0];
+          link = document.createElement('link');
+          link.href = path;
+          link.rel = 'stylesheet';
+          link.type = 'text/css';
+          head.appendChild(link);
+        };
+        getCss('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+        getCss('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
+      })();
+      $('.flexslider').flexslider({
+        animation: "fade",
+        prevText: "",
+        nextText: "",
+        directionNav: true
+      });
+    });
+</script>
+
+</body>
+</html>

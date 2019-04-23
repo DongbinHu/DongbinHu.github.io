@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+ _____   _  __    __
+/  ___/ | | \ \  / /
+| |___  | |  \ \/ /
+\___  \ | |   }  {
+ ___| | | |  / /\ \
+/_____/ |_| /_/  \_\  -----Content By six. All Rights Reserved.s
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+  <title>ES6学习笔记（二）函数的扩展 | SIX.BLOG</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="SIX.BLOG">
+    <meta name="author" content="six">
+    <meta name="description" content="码农,程序员,前端开发工程师" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="SIX.BLOG" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  <style>
+    #six-password-box{
+      width:  100%;
+      height:  100%;
+      position:  absolute;
+      border:  1px solid #000;
+      background-color:  #000;
+      z-index: 999;
+    }
+
+    #six-password-box .password-form-box{
+      z-index:  999;
+      background-color:  #fff;
+      margin-top: 20%;
+      border-radius: 8px;
+      -webkit-box-shadow: 0 4px 15px rgba(255, 193, 7, 0.51);
+      -moz-box-shadow: 0 4px 15px rgba(255, 193, 7, 0.51);
+      box-shadow: 0 4px 15px rgba(255, 193, 7, 0.51);
+    }
+    @media (max-width:768px) {
+      #six-password-box .password-form-box{
+        margin-top: 30%;
+      }
+    }
+  </style>
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}embed{z-index: -1;position: absolute;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+<!--<div id="six-password-box">-->
+    <!--<div class="password-form-box col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">-->
+            <!--<div class="row">-->
+                <!--<h3 class="col-md-12 text-center">I don`t want anybody to check my blog!</h3>-->
+                <!--<div class="form-group">-->
+                    <!--<div class="col-md-12 col-sm-12 col-xs-12">-->
+                        <!--<input class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1" id="sixPassword" style="padding-top: 0;padding-bottom: 0;border: 1px solid #666;margin-top: 10%" placeholder="Please input password" type="password">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<div class="col-md-4 col-md-offset-4 col-sm-12 col-xs-12" style="padding-top: 0;padding-bottom: 0;text-align: center;">-->
+                        <!--<button class="btn btn-primary" type="button" id="sixSubmitBtn">Submit</button>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close">
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/poem.html" target="_BLANK" class="animsition-link">pretty poem</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/技术/" class="animsition-link">技术<small>(9)</small></a></li>
+				    
+				    <li><a href="/categories/爱好/" class="animsition-link">爱好<small>(3)</small></a></li>
+				    
+				    <li><a href="/categories/生活/" class="animsition-link">生活<small>(12)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://www.cnblogs.com/-sixgod/" class="animsition-link">cnblog</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <!--<EMBED src="http://oyzg3m24h.bkt.clouddn.com/i%20miss%20u.mp3" autostart="true" loop="TRUE" width="0" height="0">-->
+            <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">SIX.BLOG</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/DongbinHu" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/SixHu" title="Twitter" target="_blank"><i class="icon-tuite"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/133230866" title="Sina-Weibo" target="_blank"><i class="icon-zliconweibo01"></i></a></li>
+                            
+                            
+                            <li><a href="http://www.cnblogs.com/-sixgod/" title="cnblogs" target="_blank"><i class="icon-wuxianxinhao"></i></a></li>
+                            
+                            
+                            <li><a href="http://blog.csdn.net/six__god" title="csdn" target="_blank"><i class="icon-c"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+    </div>
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2017-08-29T02:26:31.000Z" itemprop="datePublished">
+          2017-08-29
+      </time>
+    
+</span>
+                <h1>ES6学习笔记（二）函数的扩展</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="1-函数参数的默认值"><a href="#1-函数参数的默认值" class="headerlink" title="1.函数参数的默认值"></a>1.函数参数的默认值</h1><h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p>ES6之前，不能直接为函数的参数指定默认值，只能采用变通的方法。  </p>
+<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params">x,y</span>) </span>{
+    y = y || <span class="string">'World'</span>;
+    <span class="built_in">console</span>.log(x,y);
+}
+log(<span class="string">'Hello'</span>) <span class="comment">//Hello World</span>
+log(<span class="string">'Hello'</span>, <span class="string">'China'</span>) <span class="comment">//Hello China</span>
+log(<span class="string">'Hello'</span>,<span class="string">''</span>) <span class="comment">// Hello World</span>
+</code></pre>
+<p>上面代码检查函数<code>log</code>的参数<code>y</code>有没有赋值，如果没有，则指定默认值为<code>World</code>。这种写法的缺点在于，如果参数<code>y</code>赋值了，但是对应的布尔值为<code>false</code>，则该赋值不起作用。就像上面代码的最后一行，参数<code>y</code>等于空字符，结果被改为默认值。<br>为了改变这个问题，通常需要先判断一下参数<code>y</code>是否被赋值，如果没有，再等于默认值。  </p>
+<pre><code class="javascript"><span class="keyword">if</span>(<span class="keyword">typeof</span> y === <span class="string">'undefined'</span>){
+    y = <span class="string">'World'</span>;
+}
+</code></pre>
+<p>ES6允许为函数的参数设置默认值，即直接写在参数定义的后面。  </p>
+<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params">x, y=<span class="string">'World'</span></span>) </span>{
+    <span class="built_in">console</span>.log(x,y);
+}
+log(<span class="string">'Hello'</span>) <span class="comment">//Hello World</span>
+log(<span class="string">'Hello'</span>,<span class="string">'China'</span>) <span class="comment">//Hello China</span>
+log(<span class="string">'Hello'</span>,<span class="string">''</span>) <span class="comment">//Hello</span>
+</code></pre>
+<p>可以看到，ES6的写法比ES5简洁多了，而且非常自然。下面是另一个例子。  </p>
+<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x = <span class="number">0</span>,y = <span class="number">0</span></span>) </span>{
+  <span class="keyword">this</span>.x = x;
+  <span class="keyword">this</span>.y = y;
+}
+<span class="keyword">var</span> p = <span class="keyword">new</span> Point();
+p <span class="comment">// {x:0,y:0}</span>
+</code></pre>
+<p>除了简洁，ES6的写法还有两个好处：首先，阅读代码的人，可以立刻意识到哪些参数时可以省略的，不用查看函数体或文档；其次，有利于将来的代码优化，即使未来的版本在对外接口中，彻底拿掉这个参数，也不会导致以前的代码无法运行。<br>函数变量是默认声明的，所以不能用<code>let</code>或<code>const</code>再次声明。  </p>
+<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x = <span class="number">5</span></span>) </span>{
+  <span class="keyword">let</span> x = <span class="number">1</span>; <span class="comment">//error </span>
+  <span class="keyword">const</span> x = <span class="number">2</span>; <span class="comment">//error</span>
+}
+</code></pre>
+<p>上面代码中，参数变量<code>x</code>是默认声明的，在函数体中，不能用<code>let</code>或<code>const</code>再次声明，否则会报错。<br>使用参数默认值时，函数不能有同名参数。  </p>
+<pre><code class="javascript"><span class="comment">//不报错</span>
+<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x,x,y</span>) </span>{
+  <span class="comment">//...</span>
+}
+
+<span class="comment">//报错</span>
+<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x,x,y = <span class="number">1</span></span>) </span>{
+  <span class="comment">//...</span>
+}
+<span class="comment">//SyntaxError: duplicate argument names not allowed in this context</span>
+</code></pre>
+<p>另外，一个容易忽略的地方是，参数默认值不是传值的，而是每次都重新计算默认值表达式的值。也就是说，参数默认值时惰性求值的。  </p>
+<pre><code class="javascript"><span class="keyword">let</span> x = <span class="number">99</span>;
+<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">p = x + <span class="number">1</span></span>) </span>{
+  <span class="built_in">console</span>.log(p);
+}
+foo() <span class="comment">//100</span>
+
+x = <span class="number">100</span>;
+foo() <span class="comment">//101</span>
+</code></pre>
+<p>上面代码中，参数<code>p</code>的默认值时<code>x+1</code>.这时，每次调用函数<code>foo</code>，都会重新计算<code>x+1</code>，而不是默认<code>p</code>等于100。  </p>
+<hr>
+<h2 id="与解构赋值默认值结合使用"><a href="#与解构赋值默认值结合使用" class="headerlink" title="与解构赋值默认值结合使用"></a>与解构赋值默认值结合使用</h2><p>参数默认值可以与解构赋值的默认值，结合起来使用。  </p>
+<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">{x,y=<span class="number">5</span>}</span>)</span>{
+    <span class="built_in">console</span>.log(x,y);
+}
+
+foo({}) <span class="comment">//undefined 5</span>
+foo({<span class="attr">x</span>:<span class="number">1</span>}) <span class="comment">// 1 5</span>
+foo({<span class="attr">x</span>:<span class="number">1</span>,<span class="attr">y</span>:<span class="number">2</span>}) <span class="comment">// 1 2</span>
+foo() <span class="comment">// TypeError: Cannot read property 'x' of undefined</span>
+</code></pre>
+<p>上面代码只提供了对象的解构赋值默认值，没有使用函数的默认值。只有当函数<code>foo</code>的参数时一个对象时,变量<code>x</code>和<code>y</code>才会通过解构赋值生成。如果函数<code>foo</code>调用时没有提供参数，变量<code>x</code>和<code>y</code>就不会生成，从而报错。通过提供函数参数的默认值，就可以避免这种情况发生。  </p>
+<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">{x,y=<span class="number">5</span>} = {}</span>) </span>{
+  <span class="built_in">console</span>.log(x,y);
+}
+
+foo();<span class="comment">//undefined 5</span>
+</code></pre>
+<p>上面代码指定，如果没有提供参数，函数<code>foo</code>的参数默认是一个空对象。<br>下面是另一个解构赋值默认值的例子。  </p>
+<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">fetch</span>(<span class="params">url,{body = <span class="string">''</span>, method = <span class="string">'GET'</span>, headers = {} }</span>) </span>{
+    <span class="built_in">console</span>.log(method);  
+}
+
+fetch(<span class="string">'huliuliu.top'</span>,{}) <span class="comment">//"GET"</span>
+fetch(<span class="string">'huliuliu.top'</span>) <span class="comment">//报错</span>
+</code></pre>
+<p>上面代码中，函数<code>fetch</code>没有第二个参数时，函数参数的默认值就会生效，然后才是解构赋值的默认值生效，变量<code>method</code>才会取到默认值<code>GET</code>  </p>
+<p>再请问下面两种写法有什么差别？  </p>
+<pre><code class="javascript"><span class="comment">//写法一</span>
+<span class="function"><span class="keyword">function</span> <span class="title">m1</span>(<span class="params">{x = <span class="number">0</span>, y = <span class="number">0</span>} = {}</span>) </span>{
+  <span class="keyword">return</span>[x,y];
+}
+<span class="comment">//写法二</span>
+<span class="function"><span class="keyword">function</span> <span class="title">m2</span>(<span class="params">{x, y} = {x : <span class="number">0</span>,y : <span class="number">0</span>}</span>) </span>{
+  <span class="keyword">return</span>[x,y];
+}
+</code></pre>
+<p>上面两种写法都对函数的参数设定了默认值，区别是写法一函数参数的默认值时空对象，但是设置了对象解构赋值的默认值；写法二函数参数的默认值是一个具有具体属性的对象，但是没有设置对象解构赋值的默认值。  </p>
+<pre><code class="javascript"><span class="comment">// 函数没有参数的情况</span>
+m1(); <span class="comment">//[0,0]</span>
+m2(); <span class="comment">//[0,0]</span>
+
+<span class="comment">//x和y都有值得情况</span>
+m1({<span class="attr">x</span>:<span class="number">3</span>,<span class="attr">y</span>:<span class="number">8</span>}); <span class="comment">//[3,8]</span>
+m2({<span class="attr">x</span>:<span class="number">3</span>,<span class="attr">y</span>:<span class="number">8</span>}); <span class="comment">//[3,8]</span>
+
+<span class="comment">//x有值，y无值的情况</span>
+m1({<span class="attr">x</span>:<span class="number">3</span>}) <span class="comment">//[3,8]</span>
+m2({<span class="attr">x</span>:<span class="number">3</span>}) <span class="comment">//[3,undefined]</span>
+
+<span class="comment">//x,y都无值的情况</span>
+m1({}) <span class="comment">//[3,8]</span>
+m2({}) <span class="comment">//[undefined,undefined]</span>
+
+m1({<span class="attr">z</span>:<span class="number">3</span>}) <span class="comment">//[0,0]</span>
+m2({<span class="attr">z</span>:<span class="number">3</span>}) <span class="comment">//[undefined,undefined]</span>
+</code></pre>
+<hr>
+<p>对于m1来说，没有传参数的情况下，m1的参数默认是一个空对象，然后进行解构赋值，才有的x,y的默认值。也就是说，m1不但有函数参数值得默认值，而且还有解构赋值。在传值的情况向，我测试的结果是，只有传null的时候，会报错，其他情况只要没有覆盖解构赋值中的想x,y的值，都会打印出[0,0]<br>而对于m2来说，在没有传参数的情况下，函数会将它的默认值也就是{x:0,y:0}打印出来，传值之后，就覆盖了函数的参数默认值，而m2没有解构赋值，所以，如果穿的对象中没有x，y的值，就会打印出undefined。（传null同样会报错）  </p>
+<hr>
+<h2 id="参数默认值的位置"><a href="#参数默认值的位置" class="headerlink" title="参数默认值的位置"></a>参数默认值的位置</h2><p>通常情况下，定义了默认值的参数，应该是函数的尾参数。因为这样比较容易看出来，到底省略了哪些参数。如果非尾部的参数设置默认值，实际上这个参数是没法省略的。  </p>
+<pre><code class="javascript"><span class="comment">//例一</span>
+<span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x = <span class="number">1</span>, y</span>) </span>{
+  <span class="keyword">return</span> [x ,y];
+}
+
+f() <span class="comment">//[1, undefined]</span>
+f(<span class="number">2</span>) <span class="comment">//[2, undefined]</span>
+f(, <span class="number">1</span>) <span class="comment">//报错</span>
+f(<span class="literal">undefined</span>,<span class="number">2</span>) <span class="comment">//[1 ,2]</span>
+
+<span class="comment">//例二</span>
+<span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x, y = <span class="number">5</span>, z</span>) </span>{
+  <span class="keyword">return</span> [x, y, z];
+}
+
+f() <span class="comment">//[undefined, 5, undefined]</span>
+f(<span class="number">1</span>) <span class="comment">//[1, 5, undefined]</span>
+f(<span class="number">1</span>,,<span class="number">2</span>) <span class="comment">//报错</span>
+f(<span class="number">1</span>, <span class="literal">undefined</span>, <span class="number">2</span>) <span class="comment">//[1, 5, 2]</span>
+</code></pre>
+<p>上面代码中，有默认值得参数都不是尾参数。这时，无法只省略该参数，而不省略它后面的参数，除非显式输入<code>undefined</code>。<br>如果传入<code>undefined</code>，将触发该参数等于默认值，<code>null</code>则没有这个效果。  </p>
+<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x = <span class="number">5</span>, y = <span class="number">6</span></span>) </span>{
+  <span class="built_in">console</span>.log(x, y);
+}
+
+foo(<span class="literal">undefined</span>, <span class="literal">null</span>) <span class="comment">//5 null</span>
+</code></pre>
+<h2 id="函数的length属性"><a href="#函数的length属性" class="headerlink" title="函数的length属性"></a>函数的length属性</h2><p>指定了默认值以后，函数的<code>length</code>属性，将返回没有指定默认值的参数个数。也就是说，指定了默认值后，<code>length</code>属性将失真。  </p>
+<pre><code class="javascript">(<span class="function"><span class="keyword">function</span> (<span class="params">a</span>) </span>{}).length <span class="comment">//   1</span>
+(<span class="function"><span class="keyword">function</span> (<span class="params">a = <span class="number">5</span></span>) </span>{}).length <span class="comment">// 0</span>
+(<span class="function"><span class="keyword">function</span> (<span class="params">a, b, c = <span class="number">5</span></span>) </span>{}).length <span class="comment">// 2</span>
+</code></pre>
+<p>上面代码中，<code>length</code>属性的返回值，等于函数的参数个数减去指定了默认值的参数个数。比如，上面最后一个函数，定义了3个参数，其中有一个参数<code>c</code>指定了默认值，因此<code>length</code>属性等于<code>3</code>减去<code>1</code>,最后得到<code>2</code>。<br>这是因为<code>length</code>属性的含义是，该函数预期传入的参数个数。某个参数指定默认值以后，预期传入的参数个数就不包括这个参数了。同理，后文的rest参数也不会计入<code>length</code>属性。  </p>
+<pre><code class="javascript">(<span class="function"><span class="keyword">function</span> (<span class="params">...args</span>) </span>{}).length <span class="comment">// 0</span>
+</code></pre>
+<p>如果设置了默认值的参数不是尾参数，那么<code>length</code>属性也不再计入后面的参数了。  </p>
+<pre><code class="javascript">(<span class="function"><span class="keyword">function</span> (<span class="params">a = <span class="number">0</span>, b, c</span>) </span>{}).length <span class="comment">// 0</span>
+(<span class="function"><span class="keyword">function</span> (<span class="params">a, b = <span class="number">1</span>, c</span>) </span>{}).length <span class="comment">// 1</span>
+</code></pre>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>一旦设置了参数的默认值，函数进行声明初始化时，参数会形成一个单独的作用域（context）。等到初始化结束，这个作用域就会消失。这种语法行为，在不设置参数默认值时，是不会出现的。  </p>
+<pre><code class="javascript">vat x = <span class="number">1</span>;
+
+<span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x, y = x</span>) </span>{
+  <span class="built_in">console</span>.log(y);
+}
+
+f(<span class="number">2</span>) <span class="comment">//2</span>
+</code></pre>
+<p>上面的代码中，参数<code>y</code>的默认值等于变量<code>x</code>。调用函数<code>f</code>时，参数形成一个单独的作用域。在这个作用域里面，默认值变量<code>y</code>指向第一个参数<code>x</code>，而不是全局变量<code>x</code>，所以输出是<code>2</code>。<br>再看下面的例子。  </p>
+<pre><code class="javascript"><span class="keyword">let</span> x = <span class="number">1</span>;
+
+<span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">y = x</span>) </span>{
+  <span class="keyword">let</span> x = <span class="number">2</span>;
+  <span class="built_in">console</span>.log(y);
+}
+
+f() <span class="comment">// 1</span>
+</code></pre>
+<p>上面代码中，函数<code>f</code>调用时，参数<code>y = x</code>形成一个单独的作用域。这个作用域里面，变量<code>x</code>本身没有定义，所以指向外层的全局变量<code>x</code>。函数调用时，函数体内部的局部变量<code>x</code>影响不到默认值变量<code>x</code>。<br>如果此时，全局变量<code>x</code>不存在，就会报错。  </p>
+<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">y = x</span>) </span>{
+  <span class="keyword">let</span> x = <span class="number">2</span>;
+  <span class="built_in">console</span>.log(y);
+}
+
+f() <span class="comment">// ReferenceError: x is not defined</span>
+</code></pre>
+<p>下面这样写，也会报错。  </p>
+<pre><code class="javascript"><span class="keyword">var</span> x = <span class="number">1</span>;
+<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x = x</span>) </span>{
+  <span class="comment">// ...</span>
+}
+
+foo() <span class="comment">//ReferenceError: x is not defined</span>
+</code></pre>
+<p>上面代码中，参数<code>x = x</code>形成一个单独作用域。实际执行的是<code>let x = x</code>，由于暂时性死区的原因，这行代码会报错“X未定义”。<br>如果参数的默认值是一个函数，该函数的作用域也遵守这个规则。请看下面的例子。  </p>
+<pre><code class="javascript"><span class="keyword">let</span> foo = <span class="string">'outer'</span>;
+
+<span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">func = (</span>) =&gt; <span class="title">foo</span>) </span>{
+  <span class="keyword">let</span> foo = <span class="string">'inner'</span>;
+  <span class="built_in">console</span>.log(func());
+}
+
+bar() <span class="comment">// outer</span>
+</code></pre>
+<p>上面代码中，函数<code>bar</code>的参数<code>func</code>的默认值是一个匿名函数，返回值变量<code>foo</code>。函数参数形成的单独作用域里面，并没有定义变量<code>foo</code>，所以<code>foo</code>指向外层的全局变量<code>foo</code>，因此输出<code>outer</code>。<br>如果写成下面这样，就会报错。  </p>
+<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">bat</span>(<span class="params">func = (</span>) =&gt; <span class="title">boo</span>) </span>{
+  <span class="keyword">let</span> boo = <span class="string">'inner'</span>;
+  <span class="built_in">console</span>.log(func());
+}
+
+bar() <span class="comment">//ReferenceError: boo is not defined</span>
+</code></pre>
+<p>上面代码中，匿名函数里面的<code>foo</code>指向函数外层，但是函数外层并没有声明变量<code>foo</code>所以就报错了。<br>下面是一个更复杂的例子。  </p>
+<pre><code class="javascript"><span class="keyword">var</span> x = <span class="number">1</span>;
+<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x, y = function(</span>)</span>{ x = <span class="number">2</span>; }) {
+  <span class="keyword">var</span> x = <span class="number">3</span>;
+  y();
+  <span class="built_in">console</span>.log(x);
+}
+
+foo() <span class="comment">// 3</span>
+x <span class="comment">// 1</span>
+</code></pre>
+<p>上面代码中，函数<code>foo</code>的参数形成一个单独的作用域。这个作用域里面，首先声明了变量<code>x</code>，然后声明了变量<code>y</code>，<code>y</code>的默认值是一个匿名函数。这个匿名函数内部的变量<code>x</code>，指向同一个作用域的第一个参数<code>x</code>。函数<code>foo</code>内部又声明了一个内部变量<code>x</code>，该变量与第一个参数<code>x</code>由于不是同一个作用域，所以不是同一个变量，因此执行<code>y</code>后，内部变量<code>x</code>和外部全局变量<code>x</code>的值都没变。<br>如果将<code>var x = 3</code>的<code>var</code>去掉，函数<code>foo</code>的内部变量<code>x</code>就指向第一个参数<code>x</code>，与匿名函数内部的<code>x</code>是一致的，所以最后输出的就是<code>2</code>，而外层的全局变量<code>x</code>依然不受影响。  </p>
+<pre><code class="javascript"><span class="keyword">var</span> x = <span class="number">1</span>;
+<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x, y = function(</span>) </span>{
+  x = <span class="number">2</span>;
+}) {
+  x = <span class="number">3</span>;
+  y();
+  <span class="built_in">console</span>.log(x);
+}
+
+foo() <span class="comment">// 2</span>
+x <span class="comment">// 1</span>
+</code></pre>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><p>利用函数默认值，可以指定某一个参数不得省略，如果省略就抛出一个错误。  </p>
+<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">throwIfMissing</span>(<span class="params"></span>) </span>{
+  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Missing parameter'</span>);
+}
+
+<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">mustBeProvided = throwIfMissing(</span>)) </span>{
+  <span class="keyword">return</span> mustBeProvided;
+}
+
+foo()
+<span class="comment">// Error: Missing parameter</span>
+</code></pre>
+<p>上面的<code>foo</code>函数，如果调用的时候没有参数，就会调用默认值<code>throwIfMissing</code>函数，从而抛出一个错误。<br>从上面代码还可以看到，参数<code>mustBeProvided</code>的默认值就等于<code>throwIfMissing</code>函数的运行结果（注意函数名<code>throwIfMissing</code>之后有一对圆括号），这表明参数的默认值不是在定义时执行，而是在运行时执行。如果参数已经赋值，默认值中的函数就不会运行。<br>另外，可以将参数默认值设为<code>undefined</code>，表明这个参数是可以省略的。  </p>
+<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">optional = undefined</span>) </span>{
+  <span class="comment">//...</span>
+}
+</code></pre>
+<hr>
+<h1 id="2-rest参数"><a href="#2-rest参数" class="headerlink" title="2.rest参数"></a>2.rest参数</h1><p>ES6引入rest参数（形式为<code>...变量名</code>），用于获取函数的多余参数，这样就不需要使用<code>arguments</code>对象了。rest参数搭配的变量是一个数组，该变量将多余的参数放入数组中。  </p>
+<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">...values</span>) </span>{
+  <span class="keyword">let</span> sum = <span class="number">0</span>;
+
+  <span class="keyword">for</span>(<span class="keyword">var</span> val <span class="keyword">of</span> values){
+      sum += val;
+  }
+
+  <span class="keyword">return</span> sum;
+}
+
+add(<span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>) <span class="comment">//10</span>
+</code></pre>
+<p>上面代码的<code>add</code>函数是一个求和函数，利用rest参数，可以向该函数传入任意数目的参数。<br>下面是一个rest参数代替<code>arguments</code>变量的例子。  </p>
+<pre><code class="javascript"><span class="comment">// arguments变量的写法</span>
+<span class="function"><span class="keyword">function</span> <span class="title">sortNumbers</span>(<span class="params"></span>) </span>{
+  <span class="keyword">return</span> <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>).sort();
+}
+
+<span class="comment">//rest参数的写法</span>
+<span class="keyword">const</span> sortNumbers = <span class="function">(<span class="params">...numbers</span>) =&gt;</span> numbers.sort();
+</code></pre>
+<p>上面代码的两种写法，比较后可以发现，rest参数的写法更自然也更简洁。<br>注意，rest参数之后不能再有其他参数（即只能是最后一个参数），否则会报错。<br>函数的<code>length</code>属性，不包括rest参数。  </p>
+<hr>
+<h1 id="3-严格模式"><a href="#3-严格模式" class="headerlink" title="3.严格模式"></a>3.严格模式</h1><p>从ES5开始，函数内部可以设定为严格模式。  </p>
+<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params">a, b</span>) </span>{
+<span class="meta">  'use strict'</span>;
+  <span class="comment">//code</span>
+}
+</code></pre>
+<p>ES6做了一点修改，规定只要函数参数使用了默认值、解构赋值、或者扩展运算符，那么函数内部就不能显式设定为严格模式，否则会报错。<br>这样规定的原因是，函数内部的严格模式，同时适用于函数体和函数参数。但是，函数执行的时候，先执行函数参数，然后再执行函数体。这样就有一个不合理的地方。只有从函数体之中，才能知道参数是否应该以严格模式执行，但是参数却应该先于函数体执行。<br>两种方法可以规避这种限制。第一种是设定全局性的严格模式，这是合法的。  </p>
+<pre><code class="javascript"><span class="string">'use script'</span>
+
+<span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params">a, b = a</span>) </span>{
+  <span class="comment">// code</span>
+}
+</code></pre>
+<p>第二种是把函数包在一个无参数的立即执行函数里面。  </p>
+<pre><code class="javascript"><span class="keyword">const</span> doSomething = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+  <span class="string">'use script'</span>;
+  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">value = <span class="number">42</span></span>) </span>{
+    <span class="keyword">return</span> value;
+  }
+}());
+</code></pre>
+<hr>
+<h1 id="4-箭头函数"><a href="#4-箭头函数" class="headerlink" title="4.箭头函数"></a>4.箭头函数</h1><h2 id="基本用法-1"><a href="#基本用法-1" class="headerlink" title="基本用法"></a>基本用法</h2><p>ES6允许用“箭头”（<code>=&gt;</code>）定义函数。  </p>
+<pre><code class="javascript"><span class="keyword">var</span> f = <span class="function"><span class="params">v</span> =&gt;</span> v;
+</code></pre>
+<p>上面的箭头函数等同于：  </p>
+<pre><code class="javascript"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span>(<span class="params">v</span>) </span>{
+  <span class="keyword">return</span> v;
+}
+</code></pre>
+<p>如果箭头函数不需要参数或者需要多个参数，就使用一个圆括号代表参数部分。  </p>
+<pre><code class="javascript"><span class="keyword">var</span> f = <span class="function"><span class="params">()</span> =&gt;</span> <span class="number">5</span>;
+<span class="comment">//等同于</span>
+<span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{<span class="keyword">return</span> <span class="number">5</span>};
+
+<span class="keyword">var</span> sum = <span class="function">(<span class="params">num1, num2</span>) =&gt;</span> num1 + num2;
+<span class="comment">//等同于</span>
+<span class="keyword">var</span> sum = <span class="function"><span class="keyword">function</span>(<span class="params">num1, num2</span>) </span>{
+  <span class="keyword">return</span> num1 + num2;
+}
+</code></pre>
+<p>如果箭头函数的代码块部分多于一条语句，就要使用大括号将它们括起来，并且使用return语句返回。<br>由于大括号被解释为代码块，所以如果箭头函数直接返回一个对象，必须在对象外面加上括号，否则会报错。  </p>
+<h2 id="使用注意点"><a href="#使用注意点" class="headerlink" title="使用注意点"></a>使用注意点</h2><p>（1）函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。</p>
+<p>（2）不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。</p>
+<p>（3）不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用 rest 参数代替。</p>
+<p>（4）不可以使用yield命令，因此箭头函数不能用作 Generator 函数。</p>
+<p>上面四点中，第一点尤其值得注意。this对象的指向是可变的，但是在箭头函数中，它是固定的。  </p>
+<p><a href="http://es6.ruanyifeng.com/#docs/function" target="_blank" rel="noopener">传送门</a></p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+            <div class="pay-box">
+                <button class="pay-btn">赞赏支持</button>
+            </div>
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/2017/09/12/常用教程汇总/" style="float: left;">
+        ← 常用教程汇总
+    </a>
+    
+    
+    <a class="pull-right" href="/2017/08/09/jQuery事件对象event的属性和方法/">
+        jQuery事件对象event的属性和方法 →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+	var disqus_shortname = 'huliuliu';
+	window.addEventListener('load', function(){
+		(function(){
+			var dsq = document.createElement('script');
+			dsq.type = 'text/javascript';
+			dsq.async = true;
+			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		}());
+	});
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<div class="modal fade" id="payModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel" style="text-align: center;">赞赏</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row" style="text-align: center;">
+                    <div class="col-xs-6">
+                        <img class="if-weixin" src="http://汪素云.我爱你/img/weixin-pay.png" alt="微信支付">
+                    </div>
+                    <div class="col-xs-6">
+                        <img class="if-zhifubao" src="http://汪素云.我爱你/img/zhifubao-pay.png" alt="支付宝支付">
+                    </div>
+                    <div class="col-xs-6">
+                        <h3>微信支付</h3>
+                    </div>
+                    <div class="col-xs-6">
+                        <h3>支付宝支付</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy;2017<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By six. All Rights Reserved.s
+                </p>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    <!--<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>-->
+    <div style="display: none;">
+        <script src="https://s5.cnzz.com/z_stat.php?id=1275611334&web_id=1275611334" language="JavaScript"></script>
+    </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<!-- Initiate flexslider plugin -->
+<script type="text/javascript">
+    $(document).ready(function($) {
+      (function(){
+        var getCss = function(path) {
+          var head = document.getElementsByTagName('head')[0];
+          link = document.createElement('link');
+          link.href = path;
+          link.rel = 'stylesheet';
+          link.type = 'text/css';
+          head.appendChild(link);
+        };
+        getCss('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+        getCss('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
+      })();
+      $('.flexslider').flexslider({
+        animation: "fade",
+        prevText: "",
+        nextText: "",
+        directionNav: true
+      });
+    });
+</script>
+
+</body>
+</html>
