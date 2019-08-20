@@ -15,7 +15,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>用Markdown画流程图 | SIX.BLOG</title>
+  <title>Archives: 2019/8 | SIX.BLOG</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -83,7 +83,7 @@
 </head>
 
 <!--
-<body class="post-template">
+<body class="home-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -215,118 +215,83 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
     </div>
-      
-<section id="intro">
-    <div class="container">
-        <div class="row col-md-offset-2">
-            <div class="col-md-8">
-    			<span class="post-meta">
-      <time datetime="2017-06-10T06:58:34.000Z" itemprop="datePublished">
-          2017-06-10
-      </time>
-    
-</span>
-                <h1>用Markdown画流程图</h1>
+      <!-- ============================ Hero Image =========================== -->
+
+<section id="hero" class="scrollme">
+    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
+                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
+                    <div class="six-div col-xs-12">
+                        <h2>为你,千千万万遍...
+                            
+                            </h2>
+                        <p>
+                            
+                            </p>
+                    </div>
+                </div>
             </div>
+            <!-- // .col-md-12 -->
         </div>
-        <div class="col-md-8 col-md-offset-2">
-      		<div id="flowchart-0" class="flow-chart"></div>
-
-<hr>
-<table>
-<thead>
-<tr>
-<th style="text-align:right">标签&#124;</th>
-<th style="text-align:left">备注  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right">start&#124;</td>
-<td style="text-align:left">开始 </td>
-</tr>
-<tr>
-<td style="text-align:right">end&#124;</td>
-<td style="text-align:left">结束 </td>
-</tr>
-<tr>
-<td style="text-align:right">operation&#124;</td>
-<td style="text-align:left">处理  </td>
-</tr>
-<tr>
-<td style="text-align:right">subroutine&#124;</td>
-<td style="text-align:left">子程序  </td>
-</tr>
-<tr>
-<td style="text-align:right">condition&#124;</td>
-<td style="text-align:left">条件  </td>
-</tr>
-<tr>
-<td style="text-align:right">inputoutput&#124;</td>
-<td style="text-align:left">输出 </td>
-</tr>
-</tbody>
-</table>
-<font color="green"><small>因为这个hexo主题对表格支持的不是很好，所以样子比较丑</small> </font>
-
-<hr>
-<p>用法：变量名=&gt;标签名: 自定义内容:&gt;<a href="https://www.baidu.com(可选)" target="_blank" rel="noopener">https://www.baidu.com(可选)</a><br>变量名(right或者left 默认是往下走)-&gt;变量名<br>条件有两个流程，一个是yes，一个是no</p>
-<p><npm install --save hexo-filter-flowchart></npm></p>
-<p><script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">st=>start: 开始:>http://www.google.com[blank]
-e1=>end: 完成:>https://twitter.com/SixHu[blank]
-e2=>end: 撒有哪啦:>http://baike.baidu.com/link?url=HeIUMXvJKDyUn1Wb1PUlrKIlSHn-RmACMjx2jVGW-eQbCJE3f3xSpGLyyYv9zDdx0m5BPk5cB76EskfA7ftin-nLS6fUzRoJGqxPo65-FdK[blank]
-op1=>operation: 我是码农|past
-sub1=>subroutine: go out!|invalid
-c1=>condition: 是或否?|approved
-c2=>condition: 你笑了吗|current
-c3=>condition: 你哭了吗|past
-io=>inputoutput: 厉害了，我的哥|request
-
-st->op1->c1
-c1(yes)->c2
-c1(no,right)->sub1(right)->e2
-c2(yes)->c3
-c2(no)->op1
-c3(yes)->io->e1
-c3(no, right)->sub1->e2</textarea><textarea id="flowchart-0-options" style="display: none">{"scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-0-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-0-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-0", options);</script></p>
-
-            <div class="clearfix"></div>
-            <hr class="nogutter">
-            <div class="pay-box">
-                <button class="pay-btn">赞赏支持</button>
-            </div>
-        </div>
-        <nav class="pagination" role="pagination">
-    
-    <a class="pull-left" href="/2017/06/14/gulp学习记录/" style="float: left;">
-        ← gulp学习记录
-    </a>
-    
-    
-</nav>
-
-        <div class="duoshuo">
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-	var disqus_shortname = 'huliuliu';
-	window.addEventListener('load', function(){
-		(function(){
-			var dsq = document.createElement('script');
-			dsq.type = 'text/javascript';
-			dsq.async = true;
-			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-		}());
-	});
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-
-
-
-</div>
+        <div class="herofade beige-dk"></div>
     </div>
 </section>
 
+<!-- Height spacing helper -->
+<div class="heightblock"></div>
+<!-- // End height spacing helper -->
+
+<!-- ============================ END Hero Image =========================== -->
+<!-- ============================ Content =========================== -->
+
+<section id="intro">
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2019/08/20/有意思的事/">有意思的事</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2019-08-20T01:28:14.000Z" itemprop="datePublished">
+          2019-08-20
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        </p><p>几件发生在结婚以后的事</p>
+                      
+                    <p></p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2019/08/20/有意思的事/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <nav class="pagination" role="pagination">
+          
+          
+        </nav>
+    </div>
+</section>
+<section id="statement">
+    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
+        <div class="row">
+            <p>晓看天色暮看云，行也思君，坐也思君。</p>
+        </div>
+    </div>
+</section>
+<!-- ============================ END Content =========================== -->
 
       
 <!-- ============================ Footer =========================== -->
